@@ -53,3 +53,8 @@ def delete(id):
         'success'
     )
     return redirect(url_for('.list'))
+
+
+@user.route('/export', methods=['GET'])
+def export():
+    return {'users': [{'username': u.username, 'email': u.email} for u in User.query.all()]}
